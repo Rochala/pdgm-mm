@@ -256,6 +256,8 @@ fabric.properties
 .history/*
 target/*
 *.sc
+
 project/*
 .vscode/*
+
 # End of https://www.gitignore.io/api/scala

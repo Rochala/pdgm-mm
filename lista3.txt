@@ -17,4 +17,3 @@ Napisz funkcje przy użyciu rekurencji ogonowej i nieogonowej. Porównaj.
    wynik    : [5;4;3;2;1;0;9]
 
    Punkty: 3 Scala
-
