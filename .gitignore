@@ -259,5 +259,5 @@ target/*
 
 project/*
 .vscode/*
-
+.scalafmt.conf
 # End of https://www.gitignore.io/api/scala
