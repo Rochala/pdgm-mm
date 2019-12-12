@@ -47,10 +47,6 @@ object List5 extends App {
     }
     reconstructTree(recCTB(List(), List(tree)))
   }
-            
-            
-
-
 
   def clearTreeDepth[A](tree: Tree[A]): Tree[A] = {
     def recCTD(values: List[A], queue: List[Tree[A]]): List[A] = {
@@ -69,7 +65,7 @@ object List5 extends App {
 
   val t = generateTree(1)
   val s = Node(1,Node(1,Empty,Empty),Node(2,Empty,Empty))
-  print(s)
-  print(multiplyTree(s) + "\n")
-  print(clearTreeBreadth(s))
+  println(s)
+  println(multiplyTree(s) + "\n")
+  println(clearTreeBreadth(s))
 }
