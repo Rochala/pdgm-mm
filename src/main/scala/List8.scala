@@ -1,3 +1,4 @@
+import java.lang.reflect.AnnotatedType
 trait Debug {
   def debugName(): String
   def debugVar(): Unit
@@ -8,26 +9,31 @@ class Point(xv: Int, yv: Int) extends Debug {
   var y: Int = yv
   var a: String = "test"
 
+  def this() {
+    this(0,0)
+    this.a = "default"
+  }
+
   def debugName(): String = "Class name: " + getClass().getName()
   def debugVar(): Unit = {
-    def helper(list: Array[(String, String, String)]): Unit = {
-      if (!list.isEmpty) {
+    def helper(array: Array[(String, Class[_], Object)]): Unit = {
+      if (!array.isEmpty) {
         println(
-          "Field: " + list.head._1 + " => " + list.head._2 + ", " + list.head._3
+          "Field: " + array.head._1 + " => " + array.head._2.getSimpleName + ", " + array.head._3
         )
-        helper(list.tail)
+        helper(array.tail)
       }
     }
     helper(fieldArray())
   }
 
-  def fieldArray(): Array[(String, String, String)] = {
+  def fieldArray(): Array[(String, Class[_], Object)] = {
     getClass().getDeclaredFields().map { field =>
       field.setAccessible(true)
       val result = (
         field.getName,
-        field.getType.getSimpleName(),
-        field.get(this).toString()
+        field.getType(),
+        field.get(this)
       )
       field.setAccessible(false)
       result
